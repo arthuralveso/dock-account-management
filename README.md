@@ -1,3 +1,49 @@
+# Projeto para gerenciamento de contas e transações bancárias
+
+Projeto desenvolvido com as seguintes tecnologias:
+  - Java 11
+  - Spring Boot
+  - Spring Data JPA
+  - PostgreSQL
+  - Docker
+
+
+# Executando o projeto
+
+Antes de executar o servidor, é necessário criar o banco de dados na sua maquina. Caso prefira utilizar o Docker para criar um container do banco de dados basta criar o container rodando o comando abaixo no seu terminal:
+
+```
+    docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres -p 5432:5432
+```
+
+Antes de executar o projeto, crie uma base de dados para ser usada no projeto. No meu caso utilizei o nome account-management.
+
+no arquivo application.properties que fica dentro de src/main/resources ficam as configurações para conexão com o banco de dados da seguinte forma:
+
+```
+  spring.datasource.url=jdbc:postgresql://localhost:5432/account-management
+  spring.datasource.username={username-bd}
+  spring.datasource.password={senha-bd}
+```
+
+Altere as variáveis conforme as configurações locais para realizar a conexão com o banco.
+
+
+Ao executar o projeto servidor será executado em: [http://localhost:8080](http://localhost:8080) e as tabelas serão criadas automaticamente no seu banco de dados local.
+
+SCRIPT PARA INSERCÃO DE UM USUÁRIO MANUALMENTE:
+
+```
+  INSERT INTO peoples
+  (birth_date, cpf, "name")
+  VALUES('1991-01-01', '11122233344', 'Jhon Doe');
+```
+
+
+Na pasta Insomnia, existe um arquivo com os testes de todas as requisições que podem ser realizadas no projeto. Basta importa-lo para o Insomnia localmente e realizar as requisições com o projeto rodando.
+
+Para baixar o Insomnia: [https://insomnia.rest/download](https://insomnia.rest/download)
+
 
 ### Desafio Dock Tech de Seleção 
 Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
